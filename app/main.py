@@ -1,5 +1,32 @@
+from __future__ import annotations
+from typing import Iterator
+
+
+class AliveList:
+    def __init__(self) -> None:
+        self.items: list[Animal] = []
+
+    def __iter__(self) -> Iterator[Animal]:
+        return iter(self.items)
+
+    def __len__(self) -> int:
+        return len(self.items)
+
+    def __repr__(self) -> str:
+        return "[" + ", ".join(repr(x) for x in self.items) + "]"
+
+    def __getitem__(self, index: int) -> Animal:
+        return self.items[index]
+
+    def append(self, item: Animal) -> None:
+        self.items.append(item)
+
+    def remove(self, item: Animal) -> None:
+        self.items.remove(item)
+
+
 class Animal:
-    alive = []
+    alive = AliveList()
 
     def __init__(
             self,
