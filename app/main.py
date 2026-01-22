@@ -13,7 +13,7 @@ class AliveList:
         return len(self.items)
 
     def __repr__(self) -> str:
-        return "[" + ", ".join(repr(x) for x in self.items) + "]"
+        return f"[{', '.join(f'{x!r}' for x in self.items)}]"
 
     def __getitem__(self, index: int) -> Animal:
         return self.items[index]
@@ -26,7 +26,7 @@ class AliveList:
 
 
 class Animal:
-    alive = AliveList()
+    alive: AliveList = AliveList()
 
     def __init__(
             self,
